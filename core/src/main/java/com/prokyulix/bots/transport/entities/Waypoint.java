@@ -18,14 +18,16 @@ public class Waypoint {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NonNull
     @ManyToOne(fetch = FetchType.EAGER)
     private Bus bus;
 
     @OneToOne(optional = false, cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Station station;
 
-    @Column(nullable = false)
-    private Time time;
+    @NonNull
+    @Column(name = "arrive_time", nullable = false)
+    private Time arriveTime;
 
     @Column
     private String description;
